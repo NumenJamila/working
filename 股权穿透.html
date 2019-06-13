@@ -12,32 +12,20 @@
 		content="企业查询,公司查询,工商查询,企业信用信息查询系统,企业工商信息查询平台,企业财务信息查询,企业信用评价查询,企业纠纷查询,企业现金流查询,企业股权查询,企业负债查询,企业资产查询,企业财报查询,企业失信信息查询,启信宝,天眼查,天眼通">
 	<meta name="description"
 		content="信息来自国家企业信用信息公示系统，提供企业信息查询,工商查询,企业信用评价查询，企业纠纷查询，企业现金流查询，企业股权查询，企业负债查询，企业资产查询，企业财报查询,公司查询等相关信息查询；帮您快速了解企业信息,企业工商信息,企业信用信息等经营和人员投资状况！">
-	<link rel="icon" href="https://www.qichacha.com./files/favicon.png">
 	<link rel="stylesheet" href="./files/bootstrap.css" type="text/css">
-	<link rel="stylesheet" href="./files/font-awesome.min.css" type="text/css">
-	<link rel="stylesheet" href="./files/icon.css" type="text/css">
-	<link rel="stylesheet" href="./files/font.css" type="text/css">
-	<link rel="stylesheet" href="./files/app.css" type="text/css">
-	<link rel="stylesheet" href="./files/common.css" type="text/css">
-	<link rel="stylesheet" href="./files/simple-line-icons.css" type="text/css">
 
-	<script type="text/javascript" id="zhuge-js" async="" src="./files/zhuge.js"></script>
-	<script type="text/javascript" src="./files/siteconfig.js"></script>
+	<link rel="stylesheet" href="./files/app.css" type="text/css">
+
+
+	<!-- <script type="text/javascript" id="zhuge-js" async="" src="./files/zhuge.js"></script> -->
 	<script src="./files/jquery.min.js"></script>
-	<script type="text/javascript" src="./files/qrcode.min.js"></script>
 	<script type="text/javascript" src="./files/jquery.scrollTo.js"></script>
-	<script type="text/javascript" src="./files/jquery.qrcode.min.js"></script>
 	<script src="./files/bootstrap.js"></script>
 	<script type="text/javascript" src="./files/echarts.min.js"></script>
-	<script type="text/javascript" src="./files/china.js"></script>
 	<script type="text/javascript" src="./files/chartsUtil.js"></script>
 	<script type="text/javascript" src="./files/kslide.js"></script>
-	<script type="text/javascript" src="./files/searchList.js"></script>
-	<script type="text/javascript" src="./files/phoneSelect.js"></script>
 	<script src="./files/jquery.slimscroll.min.js"></script>
-	<link rel="stylesheet" href="./files/toastr.css">
 	<script type="text/javascript" src="./files/moment.js"></script>
-	<script src="./files/toastr.js" type="text/javascript"></script>
 	<script src="./files/custom.js"></script>
 
 	<script type="text/javascript">
@@ -46,15 +34,8 @@
 </head>
 
 <body>
-
-	<script type="text/javascript" src="./files/jquery.cookie.js"></script>
 	<script type="text/javascript" src="./files/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="./files/jquery.form.min.js"></script>
-	<script type="text/javascript" src="./files/global.js"></script>
-	<script type="text/javascript" src="./files/artDialog.js"></script>
-	<script type="text/javascript" src="./files/iframeTools.source.js"></script>
-	<link rel="stylesheet" type="text/css" href="./files/blue.css">
-	<link rel="stylesheet" href="./files/companyDetail.css" type="text/css">
 	<style type="text/css">
 		html,
 		body {
@@ -62,26 +43,12 @@
 			background-color: #fff;
 		}
 	</style>
-	<div class="mao-loading" id="load_data" style="display: none;"> <img src="./files/preloader.gif"> </div>
-	<div class="mao-nodata" id="no_data" style="display: none;">
-		<div class="guquan-lnodata pnodata"> <img src="./files/nno_image.png">
-			<p>没有找到相关数据</p>
-		</div>
-	</div>
+
 	<div class="mao-screen-area" id="screenArea" style="height: 640px;">
 		<div id="main" class="mao-main"
 			style="height: 100%; width: 100%; -webkit-tap-highlight-color: transparent; user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"
 			_echarts_instance_="1560244673535">
-			<div style="position: relative; overflow: hidden; width: 715px; height: 640px;">
-				<div data-zr-dom-id="bg" class="zr-element"
-					style="position: absolute; left: 0px; top: 0px; width: 715px; height: 640px; user-select: none;">
-				</div><canvas width="1072" height="960" data-zr-dom-id="0" class="zr-element"
-					style="position: absolute; left: 0px; top: 0px; width: 715px; height: 640px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas
-					width="1072" height="960" data-zr-dom-id="1" class="zr-element"
-					style="position: absolute; left: 0px; top: 0px; width: 715px; height: 640px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas
-					width="1072" height="960" data-zr-dom-id="_zrender_hover_" class="zr-element"
-					style="position: absolute; left: 0px; top: 0px; width: 715px; height: 640px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
-			</div>
+
 		</div>
 		<div class="tupu-toolbar">
 			<ul>
@@ -90,64 +57,8 @@
 				<li onclick="maoScale(2);"><span class="small"></span>缩小</li>
 				<li onclick="maoRefresh();"><span class="refresh"></span>刷新</li>
 				<li id="changeScreen" onclick="changeScreen(this);"><span class="screen"></span>全屏</li>
-				<li onclick="saveImg();zhugeTrack(&#39;图谱-保存&#39;,{&#39;图谱类型&#39;:&#39;股权穿透图&#39;});"><span
-						class="save"></span>保存</li>
+				<li onclick="saveImg()"><span class="save"></span>保存</li>
 			</ul>
-		</div>
-		<div id="company-detail" class="company-detail tp-detail">
-			<div class="e_close-bar"> <span class="ea_title">公司信息</span> <span class="ea_close"
-					onclick="popclose(this)">×</span> </div>
-			<div class="detail-content-wrap">
-				<div class="e_pop-detail-top">
-					<div class="ea_left"> <img class="mao-img" onerror="this.src='./files/default_face.png'"
-							src="./files/default_face.png"> </div>
-					<div class="ea_right">
-						<div class="ea_row1"><a target="_blank" class="ea_name-com mao-company-name">-</a></div>
-						<div class="ea_row2"><span class="text-gray">法定代表人：</span><a class="mao-oper">-</a></div>
-						<div class="ea_row2"><span class="text-gray">注册资本：</span><span class="text-black mao-ziben">-</span></div>
-						<div class="ea_row2"><span class="text-gray">成立日期：</span><span class="text-black mao-date">-</span></div>
-					</div>
-				</div>
-				<div class="m-t"> <a class="btn mao-tupu-link" target="_blank">查看图谱</a> </div>
-				<div class="m-t mao-content m-b-lg">
-					<ul class="nav nav-tabs mao-tabs">
-						<li class="active"><a
-								href="https://www.qichacha.com/company_guquan?keyNo=360240fc3341cc8dbff110d19e005908&amp;name=%E6%88%90%E9%83%BD%E7%91%9E%E5%B0%8F%E5%8D%9A%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8#gudong"
-								aria-controls="gudong" role="tab" data-toggle="tab">股东</a></li>
-						<li><a
-								href="https://www.qichacha.com/company_guquan?keyNo=360240fc3341cc8dbff110d19e005908&amp;name=%E6%88%90%E9%83%BD%E7%91%9E%E5%B0%8F%E5%8D%9A%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8#touzi"
-								aria-controls="touzi" role="tab" data-toggle="tab">对外投资</a></li>
-						<li><a
-								href="https://www.qichacha.com/company_guquan?keyNo=360240fc3341cc8dbff110d19e005908&amp;name=%E6%88%90%E9%83%BD%E7%91%9E%E5%B0%8F%E5%8D%9A%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8#member"
-								aria-controls="member" role="tab" data-toggle="tab">主要成员</a></li>
-					</ul>
-					<div class="tab-content mao-tab-content">
-						<div role="tabpanel" class="gudong-list tab-pane fade in active" id="gudong"> </div>
-						<div role="tabpanel" class="touzi-list tab-pane fade" id="touzi"> </div>
-						<div role="tabpanel" class="member-list tab-pane fade" id="member"> </div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="person-detail" class="company-detail tp-detail">
-			<div class="e_close-bar"> <span class="ea_title">人员信息</span> <span class="ea_close"
-					onclick="popclose(this)">×</span> </div>
-			<div class="detail-content-wrap">
-				<div class="e_pop-detail-top">
-					<div class="ea_left"> <img id="face_oss" onerror="personImgErr()" alt="">
-						<div class="ea_defaultImg"></div>
-					</div>
-					<div class="ea_right">
-						<div class="ea_row1"><a class="ea_name">-</a><a class="text-warning allRrelative" target="_blank">他关联<span
-									class="relativeInfoCount">0</span>家企业&gt;</a></div>
-						<div class="ea_row2"><span class="text-gray">企业：</span><a id="PerCom" class="text-blue"
-								target="_blank">-</a></div>
-						<div class="ea_row2"><span class="text-gray">职位：</span><span id="PerJob" class="text-black">-</span></div>
-					</div>
-				</div>
-				<div class="m-t"> <a id="ShowPerTupuA" class="btn mao-tupu-link" target="_blank">查看图谱</a> </div>
-				<div id="NameBar">简介</div>
-			</div>
 		</div>
 	</div>
 	<script src="./files/echarts2.js"></script>
@@ -436,55 +347,6 @@
 			transTree(touziData, 2);
 			initTree(touziData);
 			drawGuquan();
-			if (window.iframe) {
-				setTimeout(function () {
-					if (touziData || gudongData.children.length > 4) {
-						maoScale(2);
-					}
-					$('.guquan-liframe').hide();
-					$(window.parent.document).find('#guquanIframeTool').show();
-				}, 500);
-			}
-			// $('#load_data').show();
-			// var url = INDEX_URL + "cms_guquanmap3";
-			// $.ajax({
-			//     url: url,
-			//     type: 'GET',
-			//     data: {
-			//         keyNo: getQueryString("keyNo"),
-			//     },
-			//     dataType: 'JSON',
-			//     success: function (data) {
-			//         $('#load_data').hide();
-			//         if (data && data.status === 200) {
-			//             $('#no_data').hide();
-			//             rootData = data;
-			//             gudongData = data.gudong;
-			//             touziData = data.touzi;
-			//             transTree(gudongData, 1);
-			//             initTree(gudongData);
-			//             transTree(touziData, 2);
-			//             initTree(touziData);
-			//             drawGuquan();
-			//             if (window.iframe) {
-			//                 setTimeout(function () {
-			//                     if (touziData || gudongData.children.length > 4) {
-			//                         maoScale(2);
-			//                     }
-			//                     $('.guquan-liframe').hide();
-			//                     $(window.parent.document).find('#guquanIframeTool').show();
-			//                 }, 500);
-			//             }
-			//         } else {
-			//             $('#no_data').show();
-			//             $('#screenArea').hide();
-			//             if (window.iframe) {
-			//                 $('.guquan-liframe').hide();
-			//                 $('.guquan-lnodata').show();
-			//             }
-			//         }
-			//     }
-			// });
 		}
 
 
@@ -619,31 +481,11 @@
 				shape1.ndelete = true;
 				myChart.getZrender().addShape(shape1);
 
-
-				for (var i = 0; i < width + 100; i += 300) {
-					for (var j = 0; j < height + 100; j += 228) {
-						var shapeSy = new ImageShape({
-							style: {
-								image: './files/shuiying2.png',
-								x: i - moveRight,
-								y: j - moveDown,
-								width: 300,
-								height: 228
-
-							}
-						});
-						shapeSy.zlevel = 1;
-						shapeSy.z = -1;
-						shapeSy.ndelete = true;
-						myChart.getZrender().addShape(shapeSy);
-					}
-				}
-
 				var shape3 = new Text({
 					style: {
 						x: width / 2 - 165 - moveRight,
 						y: height - 30 - moveDown,
-						text: '股权穿透图由企查查基于公开信息利用大数据分析引擎独家生成。',
+						text: '股权穿透图。',
 						strokeColor: '#999',
 						color: '#999',
 						textFont: 'normal 12px 微软雅黑',
@@ -1459,23 +1301,6 @@
 					myChart.getZrender().addShape(shapeText);
 				}
 			}
-
-			for (var i = 0; i < myChart.getZrender().getWidth() + 100; i += 300) {
-				for (var j = 0; j < myChart.getZrender().getHeight() + 100; j += 228) {
-					var shapeSy = new ImageShape({
-						style: {
-							image: './files/shuiying2.png',
-							x: i,
-							y: j,
-							width: 300,
-							height: 228
-						}
-					});
-					shapeSy.hoverable = false;
-					shapeSy.ndelete = true;
-					myChart.getZrender().addShape(shapeSy);
-				}
-			}
 		}
 
 
@@ -1553,7 +1378,7 @@
 				return;
 			}
 			$.ajax({
-				url: INDEX_URL + 'cms_guquanmapinvestment',
+				url: 'cms_guquanmapinvestment',
 				data: {
 					keyNo: KeyNo
 				},
@@ -1600,7 +1425,7 @@
 				return;
 			}
 			$.ajax({
-				url: INDEX_URL + 'cms_guquanmapownership',
+				url: 'cms_guquanmapownership',
 				data: {
 					keyNo: KeyNo,
 					level: 2,
@@ -1716,8 +1541,8 @@
 			}
 			//设置保存图片的类型
 			var imgdata = canvas.toDataURL('image/jpeg', qual);
-			var filename = '成都瑞小博科技有限公司的股权穿透图_' + new Date().toLocaleDateString() + '.jpeg';
-			post(INDEX_URL + 'cms_downloadimg?filename=' + filename, {
+			var filename = '股权穿透图_' + new Date().toLocaleDateString() + '.jpeg';
+			post('cms_downloadimg?filename=' + filename, {
 				img: imgdata
 			});
 		}
@@ -1934,7 +1759,7 @@
 			$(".company-detail").hide();
 
 			if (type && type == 'person') {
-				var url = INDEX_URL + "boss_getDetail";
+				var url = "boss_getDetail";
 				$.ajax({
 					url: url,
 					type: 'GET',
@@ -2214,7 +2039,7 @@
 					}
 				});
 			} else {
-				var url = INDEX_URL + "more_findRelationsDetail";
+				var url = "more_findRelationsDetail";
 				$.ajax({
 					url: url,
 					type: 'GET',
