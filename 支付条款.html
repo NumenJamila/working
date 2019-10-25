@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>管理续费</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: block;
+      font-size: 14px;
+      font-family: "Microsoft YaHei", "Myriad Set Pro", "Sukhumvit Set", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+      background: #FFF;
+      color: #333;
+      /* min-width: 320px;
+      max-width: 414px; */
+      margin: 0 auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .renew-main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contaner {
+      flex-direction: column;
+      /* overflow-y: scroll; */
+      background-color: #FFF;
+      padding: 8px 18px;
+    }
+
+    .service-title {
+      margin: 16px 0 8px 0;
+      font-size: 18px;
+      color: #666;
+    }
+
+    .service-text {
+      font-size: 14px;
+      color: #999;
+      line-height: 1.6;
+    }
+
+    .order-footer {
+      border-top:#FF4D00 solid 1px;
+      position: fixed;
+      height: 50px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+    }
+
+    .order-settlement {
+      box-sizing: border-box;
+      width: calc(100% - 120px);
+      height: 50px;
+      line-height: 20px;
+      float: left;
+      padding: 15px;
+      font-size: 15px;
+    }
+
+    .order-final-money {
+      color: #ff8519;
+      padding-right: 10px;
+    }
+
+    .order-creat-pay {
+      width: 120px;
+      height: 50px;
+      line-height: 50px;
+      float: right;
+      font-size: 16px;
+      border: 0;
+      color: #fff;
+      background: #FF4D00;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="renew-main">
+    <div class="contaner">
+      <div class="service-title">
+        服务条款
+      </div>
+      <div class="service-text">
+        1. 任何微信用户授权于开心全家福即可免费创建一个家族。
+      </div>
+      <div class="service-text">
+        2. 开心全家福提供有限的存储空间。
+      </div>
+      <div class="service-title">
+        支付内容
+      </div>
+      <div class="service-text">
+        1. 开心全家福用户创建第二个家族起将实行收费。
+      </div>
+      <div class="service-text">
+        2. 使用空间超过一定额度也将实行收费。
+      </div>
+      <div class="service-title">
+        注意
+      </div>
+      <div class="service-text">
+        开心全家福拥有最终解释权。
+      </div>
+    </div>
+  </div>
+  <div class="order-footer">
+    <div class="order-settlement">应付：
+      <span class="order-final-money">￥ 60元</span>
+      <text>(新建家族)</text>
+    </div>
+    <button class="order-creat-pay">下单并支付</button>
+  </div>
+</body>
+
+</html>

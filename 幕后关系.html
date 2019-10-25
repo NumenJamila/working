@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<div style="width: 100%;height: 900px;">
+	<div style="height: 640px;">
 		<div id="MainCy" style="width: 100%;height: 100%;"></div>
 		<div id="MainD3" scale="1" class="no-padding tp-container"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
 				xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"> </svg>
@@ -19,6 +19,11 @@
 	<script type="text/javascript" src="./files/jquery.min.js"></script>
 	<script type="text/javascript" src="./files/d3.v4.js"></script>
 	<script type="text/javascript" src="./files/cytoscape.js"></script>
+	<script type="text/javascript" id="zhuge-js" async="" src="./files/zhuge.js"></script>
+	<script type="text/javascript" src="./files/jquery.scrollTo.js"></script>
+	<script src="./files/bootstrap.js"></script>
+	<script src="./files/jquery.slimscroll.min.js"></script>
+	<script src="./files/custom.js"></script>
 	<script>
 		$(document).ready(function () {
 
@@ -778,13 +783,13 @@
 						}
 						return index;
 					}
-
+					console.log(1, graph)
 					/*封装符合d3的数据*/
 					for (var i = 0; i < graph.nodes.length; i++) {
 						var node = graph.nodes[i];
 						node.id = node.nodeId;
 					}
-
+					console.log(2, graph)
 					for (var i = 0; i < graph.links.length; i++) {
 						var link = graph.links[i];
 						link.source = getIndex(link.sourceNode.nodeId, graph.nodes);
@@ -970,7 +975,7 @@
 								width: function (ele) {
 									//当前节点有图片
 									if (ele.data("type") == 'Person' && _currentKeyNo == ele.data('keyNo') && ele.data(
-										'hasImage')) {
+											'hasImage')) {
 										return 80;
 									}
 									//有图片
@@ -986,7 +991,7 @@
 								height: function (ele) {
 									//当前节点有图片
 									if (ele.data("type") == 'Person' && _currentKeyNo == ele.data('keyNo') && ele.data(
-										'hasImage')) {
+											'hasImage')) {
 										return 80;
 									}
 									//有图片
@@ -1037,7 +1042,7 @@
 										return label.substring(0, 4) + '\n' + label.substring(4, 9) + '\n' + label.substring(9, 13);
 									} else {
 										return label.substring(0, 4) + '\n' + label.substring(4, 9) + '\n' + label.substring(9,
-											12) +
+												12) +
 											'..';
 									}
 								},
@@ -1078,7 +1083,7 @@
 								'text-margin-y': function (ele) {
 									//当前节点有图片
 									if (ele.data("type") == 'Person' && _currentKeyNo == ele.data('keyNo') && ele.data(
-										'hasImage')) {
+											'hasImage')) {
 										return 23;
 									}
 									// 有图片
@@ -1824,8 +1829,9 @@
 
 			// 数据处理：将原始数据转换成graph数据
 			function getRootData(list) {
-				// console.log(list);
 				var graph = {}
+				var graph555 = {}
+				console.log('graph', graph555)
 				graph.nodes = [];
 				graph.links = [];
 
@@ -1834,20 +1840,20 @@
 					var nodes = list[i].graph.nodes;
 					for (var j = 0; j < nodes.length; j++) {
 						var node = nodes[j];
-						var o = {};
-						o.nodeId = node.id;
-						o.data = {};
-						o.data.obj = node;
-						//o.data.showStatus = 'NORMAL'; // NORMAL HIGHLIGHT DULL
-						o.data.showStatus = null; // NORMAL HIGHLIGHT DULL
-						o.layout = {}
-						o.layout.level = null; // 1 当前查询节点
-						o.layout.singleLinkChildren = []; // 只连接自己的node
-						graph.nodes.push(o);
-
+						let yyy = {};
+						console.log(555, yyy)
+						yyy.nodeId = node.id;
+						yyy.data = {};
+						yyy.data.obj = node;
+						//yyy.data.showStatus = 'NORMAL'; // NORMAL HIGHLIGHT DULL
+						yyy.data.showStatus = null; // NORMAL HIGHLIGHT DULL
+						yyy.layout = {}
+						yyy.layout.level = null; // 1 当前查询节点
+						yyy.layout.singleLinkChildren = []; // 只连接自己的node
+						graph.nodes.push(yyy);
 						// 设置_rootNode
-						if (_currentKeyNo == o.data.obj.properties.keyNo) {
-							_rootNode = o;
+						if (_currentKeyNo == yyy.data.obj.properties.keyNo) {
+							_rootNode = yyy;
 						}
 					}
 				}
@@ -1859,17 +1865,17 @@
 
 					for (var k = 0; k < relationships.length; k++) {
 						var relationship = relationships[k];
-						var o = {}
-						o.data = {};
-						o.data.obj = relationship;
-						//o.data.showStatus = 'NORMAL'; // NORMAL HIGHLIGHT DULL
-						o.data.showStatus = null; // NORMAL HIGHLIGHT DULL
-						o.sourceNode = getGraphNode(relationship.startNode, graph.nodes);
-						o.targetNode = getGraphNode(relationship.endNode, graph.nodes);
-						o.linkId = relationship.id;
-						o.source = getNodesIndex(relationship.startNode, graph.nodes);
-						o.target = getNodesIndex(relationship.endNode, graph.nodes);
-						graph.links.push(o);
+						var yyy = {}
+						yyy.data = {};
+						yyy.data.obj = relationship;
+						//yyy.data.showStatus = 'NORMAL'; // NORMAL HIGHLIGHT DULL
+						yyy.data.showStatus = null; // NORMAL HIGHLIGHT DULL
+						yyy.sourceNode = getGraphNode(relationship.startNode, graph.nodes);
+						yyy.targetNode = getGraphNode(relationship.endNode, graph.nodes);
+						yyy.linkId = relationship.id;
+						yyy.source = getNodesIndex(relationship.startNode, graph.nodes);
+						yyy.target = getNodesIndex(relationship.endNode, graph.nodes);
+						graph.links.push(yyy);
 					}
 				}
 				graph.links = uniqeByKeys(graph.links, ['linkId']);
@@ -1960,8 +1966,9 @@
 						try {
 							node.layout.level = level;
 							nextNodes = nextNodes.concat(getNextNodes(node.nodeId, svg_links, level));
+						} catch (err) {
+							console.log(err)
 						}
-						catch(err) {console.log(err)}
 					}
 					level++;
 					nodes = nextNodes;

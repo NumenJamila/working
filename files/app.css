@@ -8072,21 +8072,7 @@ small.info{background: #5bc0de;}
 
 
 /*图谱弹窗里的样式*/
-.tupu-shuiying{
-    /*background: url(../images/shuiying.png) center center no-repeat;
-    background-size: 350px;*/
-    background: url(../images/shuiying2.png) repeat;
-    background-size: 300px 228px;
-}
-.tupu-shuiying2{
-    background: url(../images/shuiying2.png) repeat;
-    background-size: 300px 228px;
-}
-.table-shuiying{
-    background: url(../images/shuiying5.png) repeat;
-    background-size: 450px 378px;
-    background-color: #fff;
-}
+
 .tupu-footer{
     padding: 10px 15px;
     font-size: 12px;

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>要不要惩罚小明？</title>
+  <script src="./files/echarts.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .Voting-details {
+      margin-bottom: 10px;
+    }
+    .voting-item {
+      position: relative;
+      background-color: #f5c6c6bf;
+      width: 98%;
+      height: 40px;
+      border-radius: 10px;
+      margin: 10px auto;
+    }
+    .voting-item span {
+      /* line-height: 2; */
+      font-size: 14px;
+    }
+    .voting-item .item-name{
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+    }
+    .voting-item .item-count{
+      position: absolute;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+    }
+    .count-bgc {
+      background-color: #fff;
+      padding: 2px 16px;
+    }
+    .name-bgc {
+      background-color: #fff;
+      padding: 2px 6px;
+      margin-right: 20px; 
+    }
+    .voting-people {
+      /* border: #eee solid 1px; */
+      margin-left: 4%;
+      /* width: 96%; */
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .voting-img {
+      width: 16%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 8px;
+    }
+    .voting-img img {
+      width: 80%;
+      /* height: 80%; */
+    }
+  </style>
+</head>
+<body>
+  <div class="Voting-echart">
+    <div id="pieId" style="width: 100%;height:200px;"></div>
+  </div>
+  <div class="Voting-details">
+    <div class="voting-item">
+      <div class="item-name"> 
+        <span>
+          总票数
+        </span>
+      </div> 
+      <div class="item-count count-bgc"> 
+        <span>
+          14
+        </span>
+      </div> 
+    </div>
+    <div class="voting-people">
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      
+      </div>
+  </div>
+  <div class="Voting-details">
+    <div class="voting-item">
+      <div class="item-name"> 
+        <span class="name-bgc">
+          不要
+        </span>
+        <span>
+          票数
+        </span>
+      </div> 
+      <div class="item-count count-bgc"> 
+        <span>
+          9
+        </span>
+      </div> 
+    </div>
+    <div class="voting-people">
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      
+      </div>
+  </div>
+  <div class="Voting-details">
+    <div class="voting-item">
+      <div class="item-name"> 
+          <span class="name-bgc">
+              要
+            </span>
+            <span>
+              票数
+            </span>
+      </div> 
+      <div class="item-count count-bgc"> 
+        <span>
+          14
+        </span>
+      </div> 
+    </div>
+    <div class="voting-people">
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      
+      </div>
+  </div>
+  <div class="Voting-details">
+    <div class="voting-item">
+      <div class="item-name"> 
+          <span class="name-bgc">
+              没想好
+            </span>
+            <span>
+              票数
+            </span>
+      </div> 
+      <div class="item-count count-bgc"> 
+        <span>
+          14
+        </span>
+      </div> 
+    </div>
+    <div class="voting-people">
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      <div class="voting-img">
+        <img src="https://co-image.qichacha.com/upload/face/70.jpg" alt="">
+      </div>
+      
+      </div>
+  </div>
+  </div>
+    <script>
+        // 绘制图表。
+        echarts.init(document.getElementById('pieId')).setOption({
+            series: {
+                type: 'pie',  // 饼状图。
+                data: [
+                    {name: '要', value: 2},  // value可以是数字类型，也可以是字符串形式的数字。
+                    {name: '不要', value: 9},
+                    {name: '没想好', value: 3}
+                ]
+            }
+        });
+    </script>
+
+</body>
+</html>

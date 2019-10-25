@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>引导层</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      background: url("https://t12.baidu.com/it/u=541581695,4055461334&fm=76") no-repeat center fixed;
+      background-size: cover;
+    }
+    .trans {
+    /*transition*/
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+.test_outer {
+    /* background-color:lime; */
+    position: fixed;
+      /* background: rgba(0, 0, 0, 0.5); */
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+
+    margin: 0 auto;
+
+    overflow:hidden;/* 因为遮罩层肯定比实际区域大，所以遮罩层的限制层：overflow：hidden控制不出现滚动条 */
+}
+.test_cover {
+    /* 定义镂空区域宽高大小尺寸 */
+    width: 90px;
+    height: 90px;
+    border: 960px solid rgba(0, 0, 0, .45);/* 使用元素的大border作为遮罩层的 */
+    border-radius: 50%;
+    position: absolute;
+}
+
+.test_cover_pos1 {
+    left: 30px;
+    top: 30px;
+}
+.test_cover_pos1:after {
+    content: '☺首先选择您所在的城市';
+    margin: 16px 0 0 -140px;
+}
+
+.test_cover_pos2 {
+    left: 30px;
+    top: 30px;
+}
+.test_cover_pos2:after {
+    width: 140px;
+    content: '☺全新推图订餐服务，给你不一样的体验！';
+    margin: 16px 0 0 60px;
+}
+
+.test_cover_pos3 {
+    left: 30px;
+    top: 30px;
+}
+.test_cover_pos3:after {
+    content: '☺随时拨打订餐！';
+    margin: -20px 0 0 -20px;
+    white-space: nowrap;
+}
+
+.test_cover_pos1:after, .test_cover_pos2:after, .test_cover_pos3:after {
+    color: #fff;
+    font-family: '微软雅黑';
+    text-shadow: 1px 1px rgba(0,0,0,.35);
+    position: absolute;
+}
+.nextBtn {
+  position: fixed;
+  z-index: 1000;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%)
+}
+  </style>
+</head>
+<body>
+  <!-- 遮罩层的限制层：overflow：hidden控制不出现滚动条 -->
+<div class="test_outer">
+  <!-- 遮罩层 -->
+  <span id="testCover" class="test_cover test_cover_pos1 trans"></span>
+  <button class="nextBtn">我知道啦</button>
+</div>
+<script src="./files/jquery.min.js"></script>
+<script>
+  (function(stepIndex) {
+    $(".nextBtn").click(function(stepIndex) {
+    var objStep = document.getElementById("testCover");
+    objStep.className = objStep.className.replace(/\d/, (stepIndex + 1));
+    stepIndex++;
+    if (stepIndex > 2) {
+        stepIndex = 0;
+    }
+    });
+  });
+</script>
+</body>
+</html>

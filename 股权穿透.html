@@ -12,37 +12,20 @@
 		content="企业查询,公司查询,工商查询,企业信用信息查询系统,企业工商信息查询平台,企业财务信息查询,企业信用评价查询,企业纠纷查询,企业现金流查询,企业股权查询,企业负债查询,企业资产查询,企业财报查询,企业失信信息查询,启信宝,天眼查,天眼通">
 	<meta name="description"
 		content="信息来自国家企业信用信息公示系统，提供企业信息查询,工商查询,企业信用评价查询，企业纠纷查询，企业现金流查询，企业股权查询，企业负债查询，企业资产查询，企业财报查询,公司查询等相关信息查询；帮您快速了解企业信息,企业工商信息,企业信用信息等经营和人员投资状况！">
-	<link rel="stylesheet" href="./files/bootstrap.css" type="text/css">
+	<!-- <link rel="stylesheet" href="./files/bootstrap.css" type="text/css">
 
-	<link rel="stylesheet" href="./files/app.css" type="text/css">
+	<link rel="stylesheet" href="./files/app.css" type="text/css"> -->
 
 
 	<!-- <script type="text/javascript" id="zhuge-js" async="" src="./files/zhuge.js"></script> -->
 	<script src="./files/jquery.min.js"></script>
-	<script type="text/javascript" src="./files/jquery.scrollTo.js"></script>
-	<script src="./files/bootstrap.js"></script>
 	<script type="text/javascript" src="./files/echarts.min.js"></script>
-	<script type="text/javascript" src="./files/chartsUtil.js"></script>
 	<script type="text/javascript" src="./files/kslide.js"></script>
-	<script src="./files/jquery.slimscroll.min.js"></script>
-	<script type="text/javascript" src="./files/moment.js"></script>
 	<script src="./files/custom.js"></script>
 
-	<script type="text/javascript">
-		var qrcodePolling = false;
-	</script>
 </head>
 
 <body>
-	<script type="text/javascript" src="./files/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="./files/jquery.form.min.js"></script>
-	<style type="text/css">
-		html,
-		body {
-			height: 100%;
-			background-color: #fff;
-		}
-	</style>
 
 	<div class="mao-screen-area" id="screenArea" style="height: 640px;">
 		<div id="main" class="mao-main"
@@ -50,19 +33,8 @@
 			_echarts_instance_="1560244673535">
 
 		</div>
-		<div class="tupu-toolbar">
-			<ul>
-				<li onclick="editRect(this);"><span class="sel"></span>编辑</li>
-				<li onclick="maoScale(1);"><span class="big"></span>放大</li>
-				<li onclick="maoScale(2);"><span class="small"></span>缩小</li>
-				<li onclick="maoRefresh();"><span class="refresh"></span>刷新</li>
-				<li id="changeScreen" onclick="changeScreen(this);"><span class="screen"></span>全屏</li>
-				<li onclick="saveImg()"><span class="save"></span>保存</li>
-			</ul>
-		</div>
 	</div>
 	<script src="./files/echarts2.js"></script>
-	<script src="./files/jquery.slimscroll.min.js"></script>
 	<script type="text/javascript">
 		var myChart;
 		var showKeyNo;
@@ -72,15 +44,11 @@
 		var treeId = 1;
 		var _currentKeyNo;
 		var canEditRect = false;
-
 		$(document).ready(function () {
 			resizeScreen();
 			myChart = echarts.init(document.getElementById('main'));
-
 			getData();
-
 		});
-
 		window.onresize = function () {
 			resizeScreen();
 		}
@@ -349,7 +317,6 @@
 			drawGuquan();
 		}
 
-
 		function changeScreen(dom) {
 			if (!isFullScreen()) {
 				$(dom).html('<span class="screened"></span>退出');
@@ -359,7 +326,6 @@
 				exitFullScreen();
 			}
 		}
-
 		//切换全屏
 		setFullScreenListener(function () {
 			setTimeout(function () {
@@ -367,15 +333,11 @@
 				initZrender();
 			}, 300);
 		}) //
-
-
 		function maoRefresh() {
-
 			refresh();
 		}
 
 		function refresh() {
-
 			var ecConfig = require('echarts/config');
 			myChart._messageCenter.dispatch(ecConfig.EVENT.RESTORE, null, null, myChart);
 		}
@@ -387,7 +349,6 @@
 				setTimeout(function () {
 					jietu();
 				}, 1000);
-
 			} else {
 				jietu();
 			}
@@ -398,17 +359,14 @@
 					'position: fixed; background: #fff; z-index: 1000; top: 0px; bottom: 0px; left: 0px; right: 0px;'
 				);
 				document.body.appendChild(jietuMask);
-
 				var width = 1440;
 				var height = 900;
-
 				var minX = 0;
 				var maxX = 0;
 				var minY = 300;
 				var maxY = 0;
 				var moveDown = 0;
 				var moveRight = 0;
-
 				var shapeList = myChart.getZrender().storage.getShapeList();
 				for (var i = 0; i < shapeList.length; i++) {
 					if (shapeList[i].style && shapeList[i].style.iconType == 'rectangle') {
@@ -426,47 +384,30 @@
 						}
 					}
 				}
-
 				if ((maxX - minX + 300) > width) {
 					width = maxX - minX + 300;
 					moveRight = -(maxX + minX - myChart.getZrender().getWidth() + 146) / 2;
-
 				}
 				if ((maxY - minY + 300) > 900) {
 					height = maxY - minY + 300;
 				}
-
 				moveDown = -(maxY + minY - myChart.getZrender().getHeight()) / 2 - 85;
-
 				var layer = myChart.getZrender().painter._layers[1];
 				var bS = layer.scale.concat();
 				var bP = layer.position.concat();
-
 				layer.scale = [1, 1, 0, 0];
 				layer.position = [0, 0];
-
 				var bW = myChart.getZrender().getWidth();
 				var bH = myChart.getZrender().getHeight();
-
 				$('#main').width(width);
 				$('#main').height(height);
-
 				var zdW = myChart.getZrender().getWidth();
 				var zdH = myChart.getZrender().getHeight();
-
-
-
-
-
 				myChart.resize();
-
 				myChart.getZrender().painter.refresh();
-
 				initZrender(true);
-
 				layer.position[0] = moveRight;
 				layer.position[1] = moveDown;
-
 				var shape1 = new Rectangle({
 					style: {
 						x: -1000 - moveRight,
@@ -480,7 +421,6 @@
 				shape1.z = -2;
 				shape1.ndelete = true;
 				myChart.getZrender().addShape(shape1);
-
 				var shape3 = new Text({
 					style: {
 						x: width / 2 - 165 - moveRight,
@@ -496,17 +436,14 @@
 				shape3.z = -1;
 				shape3.ndelete = true;
 				myChart.getZrender().addShape(shape3);
-
 				setTimeout(function () {
 					var canvas = $('#main canvas')[1];
-
 					var isIE11 = (!!window.ActiveXObject || "ActiveXObject" in window);
 					if (isIE11) {
 						downloadimg(canvas);
 					} else {
 						download(canvas, 'jpg');
 					}
-
 					$('#main').width('100%');
 					$('#main').height(bH);
 					myChart.resize();
@@ -540,7 +477,6 @@
 				myChart.getZrender().render();
 			}
 		}
-
 		// 编辑（删除节点）
 		function editRect(dom) {
 			if (canEditRect) {
@@ -552,8 +488,6 @@
 			}
 			initZrender();
 		}
-
-
 
 		function transTree(data, type) {
 			if (!data) return;
@@ -577,11 +511,9 @@
 				data.name = data.Name.substr(0, 7) + '…';
 			}
 			data.name = data.name.replace(/(.{10})(?=.)/g, '$1\n');
-
 			if (data.StockRightNum) {
 				data.subtext = '持股数：' + data.StockRightNum + '';
 			} else if (data.ShouldCapi) {
-
 				data.subtext = '认缴金额：' + data.ShouldCapi;
 			}
 			if (data.KeyNo) {
@@ -593,7 +525,6 @@
 					}
 				}
 			}
-
 			if (data.Tags) {
 				$.each(data.Tags, function (index, vo) {
 					if (vo.Type == 2) {
@@ -608,7 +539,6 @@
 					}
 				});
 			}
-
 			data.editable = true;
 			data.symbol = 'rectangle';
 			data.symbolSize = [146, 62];
@@ -638,7 +568,6 @@
 					borderColor: "rgba(255,255,255,0)",
 				}
 			};
-
 			if (data.Org == 2) {
 				data.symbol = 'rectangle';
 				data.clickable = true;
@@ -667,7 +596,6 @@
 					}
 				};
 			}
-
 			var children = data.children;
 			if (children) {
 				for (var i = 0; i < children.length; i++) {
@@ -675,7 +603,6 @@
 					children[i] = addTampArrow(children[i], fontSize);
 				}
 			}
-
 			if (type == 1) {
 				if (rootData.kzr) {
 					if (data.KeyNo) {
@@ -711,7 +638,6 @@
 				}
 			}
 			treeId++;
-
 		}
 
 		function addTampArrow(cnode, fontSize) {
@@ -815,11 +741,8 @@
 					data.extend = 1;
 					//data.symbol = 'rectangle';
 				}
-
 			}
-
 		}
-
 		//股权穿透图
 		function drawGuquan() {
 			myChart.clear();
@@ -827,9 +750,7 @@
 				title: {
 					text: '',
 				},
-				series: [
-
-				]
+				series: []
 			};
 			var roam = true;
 			if (window.iframe) {
@@ -877,13 +798,11 @@
 			myChart.setOption(option);
 			initZrender();
 			animatieChart(myChart);
-
 			var isDrag;
 			var dragStartPos;
 			myChart.getZrender().on("mousedown", function (param) {
 				isDrag = true;
 				dragStartPos = [param.event.x, param.event.y];
-
 			});
 			myChart.getZrender().on("mouseup", function (param) {
 				if (dragStartPos[0] == param.event.x && dragStartPos[1] == param.event.y) {
@@ -891,7 +810,6 @@
 				}
 				dragStartPos = [];
 			});
-
 			myChart.on('click', function (e) {
 				if (isDrag) return;
 				if ((e.data.Org == 0 || e.data.Org == 4 || e.data.Org == 7 || e.data.Org == 8 || e.data.Org ==
@@ -925,8 +843,6 @@
 					}
 				}
 			});
-
-
 			myChart.getZrender().on('click', function (e) {
 				if (isDrag) return;
 				if (e.target && e.target.clickcom) {
@@ -936,7 +852,6 @@
 					editTree(e.target.keyNo, e.target.treeId);
 				}
 			});
-
 			myChart.on('restore', function (param) {
 				getNode(gudongData);
 				getNode(touziData);
@@ -955,15 +870,12 @@
 						data.extend = 1;
 						//data.symbol = 'circleCross';
 					}
-
 				}
 				myChart.clear();
 				myChart.setOption(option);
 				initZrender();
 				animatieChart(myChart);
-
 			});
-
 		}
 
 		function initZrender(jietu) {
@@ -1030,7 +942,6 @@
 						} else {
 							iconImg = './files/tupu_minus.svg';
 						}
-
 					}
 					var shapeY = shapeList[i].rotation[2];
 					if (shapeList[i]._echartsData._data.isTouzi) {
@@ -1045,7 +956,6 @@
 							y: shapeY,
 							width: 18,
 							height: 18
-
 						}
 					});
 					shape.keyNo = shapeList[i]._echartsData._data.KeyNo;
@@ -1079,7 +989,6 @@
 							y: shapeY,
 							width: 18,
 							height: 18
-
 						}
 					});
 					shape.zlevel = 1;
@@ -1172,7 +1081,6 @@
 					shapeText.hoverable = false;
 					myChart.getZrender().addShape(shape);
 					myChart.getZrender().addShape(shapeText);
-
 				} else if (shapeList[i]._echartsData && shapeList[i]._echartsData._data.syr) {
 					var shape = new ImageShape({
 						style: {
@@ -1213,7 +1121,6 @@
 					shapeText.hoverable = false;
 					myChart.getZrender().addShape(shape);
 					myChart.getZrender().addShape(shapeText);
-
 				}
 				if (shapeList[i]._echartsData && shapeList[i]._echartsData._data.kg) {
 					var shapeY = shapeList[i].rotation[2] - shapeList[i].style.height / 2 - 21.5;
@@ -1257,7 +1164,6 @@
 						shapeColor = '#DDF0FF';
 						shapeTextColor = '#128bed';
 					}
-
 					var shape = new Rectangle({
 						style: {
 							x: shapeList[i].rotation[1] - 72.5,
@@ -1302,7 +1208,6 @@
 				}
 			}
 		}
-
 
 		function editTree(KeyNo, tid) {
 			getNode(gudongData);
@@ -1370,10 +1275,7 @@
 			initZrender();
 		}
 
-
-
 		function ajaxtouzidata(node, KeyNo) {
-
 			if (!node.isTouzi || node.ajaxtouzi) {
 				return;
 			}
@@ -1406,7 +1308,6 @@
 							cnode.children = null;
 							cnode.extend = 1;
 						}
-
 					}
 				})
 			})
@@ -1415,7 +1316,6 @@
 			myChart.setOption(option);
 			initZrender();
 		}
-
 		//动态加载股东节点
 		function ajaxgudongdata(node, KeyNo) {
 			if (node.isTouzi || node.ajaxgudong) {
@@ -1452,7 +1352,6 @@
 							cnode.children = null;
 							cnode.extend = 1;
 						}
-
 					}
 				})
 			})
@@ -1461,9 +1360,6 @@
 			myChart.setOption(option);
 			initZrender(false, '');
 		}
-
-
-
 
 		function resizeScreen() {
 			if (document.body.clientHeight > 700) {
@@ -1491,7 +1387,6 @@
 			$('.ea_defaultImg').show();
 			$('.ea_defaultImg').text(name[0]);
 		}
-
 		if (window.iframe) {
 			$('.navi-header').hide();
 			$('.mao-head').hide();
@@ -1737,7 +1632,6 @@
 			$('#ScrollContent').scroll(function () {
 				var top = $(this).scrollTop();
 				top += 250;
-
 				showIndex = 0;
 				for (var i = 0; i < pos.length; i++) {
 					if ((i + 1) < pos.length && top < pos[i + 1].y) {
@@ -1748,16 +1642,13 @@
 						showIndex = i;
 					}
 				}
-
 				$("#NameBar").html($(showWraps[showIndex]).html());
 				$("#NameBar").show();
 			});
 		}
-
 		/**/
 		function showDetail2(keyNo, tupuUrl, type) {
 			$(".company-detail").hide();
-
 			if (type && type == 'person') {
 				var url = "boss_getDetail";
 				$.ajax({
@@ -1771,9 +1662,7 @@
 						if (!data.name) return;
 						$("#ScrollContent").remove();
 						// $("#ShowPerTupu").after($("#PerDeailTpl").html());
-
 						$("#NameBar").after($("#PerDeailTpl").html());
-
 						/*人物搜索里的查看图谱*/
 						if (_currentKeyNo == keyNo || !data.boss_id) {
 							$("#ShowPerTupu").attr('canshow', '0');
@@ -1791,15 +1680,10 @@
 							$("#ShowPerTupuA").attr("href", "/company_muhou4?keyNo=" + keyNo + "&name=" +
 								encodeURIComponent(data.name));
 						}
-
 						$("#BossInfo").hide();
-
 						$('.allRrelative').attr('href', '/pl_' + keyNo);
-
 						$('.ea_name').text(data.name ? data.name : '-');
 						$('.ea_name').attr('href', '/pl_' + keyNo);
-
-
 						$('.ea_defaultImg').text();
 						$('.ea_defaultImg').hide();
 						$('#face_oss').show();
@@ -1809,7 +1693,6 @@
 							$('#face_oss').attr('src', 'https://co-image.qichacha.com/PersonImage/' +
 								keyNo + '.jpg');
 						}
-
 						$('#PerCom').text(data.companyname ? data.companyname : '-');
 						$('#PerJob').text(data.job ? data.job : '-');
 						if (data.companykey) {
@@ -1818,7 +1701,6 @@
 							$('#PerCom').attr('href', '');
 						}
 						$("#des").parent().parent().removeAttr('style');
-
 						$("#des").text(data.des ? data.des : '暂无');
 						/*简介没有时隐藏*/
 						if (!data.des) {
@@ -1826,10 +1708,7 @@
 							desWrap.siblings('.detail-title-wrap').eq(0).remove();
 							desWrap.remove();
 						}
-
-
 						$(".relativeInfoCount").text(data.relativeInfoCount ? data.relativeInfoCount : '0');
-
 						$("#relativeInfoData").html('');
 						if (data.relativeInfoData && data.relativeInfoData.length) {
 							var html = '';
@@ -1846,7 +1725,6 @@
 							})
 							$("#relativeInfoData").html(html);
 						}
-
 						if (data.boss_id) { // 热门人物
 							$("#BossInfo").show();
 							$('#biye').text(data.biye ? data.biye : '-');
@@ -1986,15 +1864,12 @@
 								$('#sayings-wrap').hide();
 							}
 						}
-
 						$("#person-detail").fadeIn();
-
 						/*e_contentMore元素初始化*/
 						$(".e_contentMore").each(function () {
 							var wrap = $(this);
 							var content = wrap.find(".ea_content");
 							var bt = wrap.find(".ea_bt");
-
 							var wrapHeight = wrap.height();
 							var contentHeight = content.height();
 							if (contentHeight > wrapHeight) {
@@ -2015,24 +1890,19 @@
 									});
 									bt.text("收起");
 								}
-
 								scrollTitleInit();
 							});
 						})
-
 						/*样式处理,bug #2191-1*/
 						if ($("#BossInfo").is(':hidden')) {
 							$("#glgs").siblings('.ntable').addClass('marginNone');
 						} else {
 							$("#glgs").siblings('.ntable').removeClass('marginNone');
 						}
-
 						/*$('#ScrollContent').slimScroll({
 						    wheelStep: 1
 						});*/
-
 						scrollTitleInit();
-
 					},
 					error: function (data) {
 						console.log(data);
@@ -2090,7 +1960,6 @@
 						} else {
 							companyDetail.find('.mao-oper').text('-');
 						}
-
 						companyDetail.find('.mao-ziben').text(data.Result.RegistCapi || '-');
 						companyDetail.find('.mao-date').text((data.Result.StartDate || ''));
 						companyDetail.find('.mao-company-name').attr("href", "firm_" + keyNo + ".shtml");
@@ -2102,16 +1971,13 @@
 						companyDetail.find('.close').click(function () {
 							companyDetail.fadeOut();
 						});
-
 						if (_currentKeyNo == keyNo) {
 							$(".mao-tupu-link").parent().hide();
 						} else {
 							$(".mao-tupu-link").parent().show();
 						}
-
 						var noData =
 							'<div class="mao-noresult"> <p ><img src="./files/nodata.png"></p>暂无信息</div>';
-
 						//股东
 						if (data.Result.Partners && data.Result.Partners.length > 0) {
 							var html = '<table class="ntable">';
@@ -2142,17 +2008,12 @@
 								html += "</tr>";
 							}
 							html += '</table>'
-
 							companyDetail.find('.gudong-list').html(html);
-
-
 						} else {
 							companyDetail.find('.gudong-list').html(noData);
 						}
-
 						//投资
 						if (data.Result.touziList && data.Result.touziList.length > 0) {
-
 							var html = '<table class="ntable">';
 							html += "<thead><tr><th  style='text-align: left'>名称</th></tr></thead>";
 							for (var i = 0; i < data.Result.touziList.length; i++) {
@@ -2167,7 +2028,6 @@
 						} else {
 							companyDetail.find('.touzi-list').html(noData);
 						}
-
 						//成员
 						if (data.Result.Employees && data.Result.Employees.length > 0) {
 							var html = '<table class="ntable">';
@@ -2190,11 +2050,9 @@
 							}
 							html += '</table>';
 							companyDetail.find('.member-list').html(html);
-
 						} else {
 							companyDetail.find('.member-list').html(noData);
 						}
-
 						$("#company-detail").fadeIn();
 						companyDetail.find('.mao-tab-content').slimScroll({
 							wheelStep: 1
@@ -2206,9 +2064,6 @@
 				});
 			}
 		}
-
-
-
 		/*ie兼容*/
 		var isIE = (!!window.ActiveXObject || "ActiveXObject" in window);
 		if (isIE) {
@@ -2226,7 +2081,6 @@
 			padding-bottom: 25px;
 			border-radius: 0px;
 			text-align: center;
-
 		}
 
 		#vipModal .close {
